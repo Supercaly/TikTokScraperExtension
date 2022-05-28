@@ -61,12 +61,13 @@ function runContentScraping() {
 
     function convertBigNumStrToNum(numStr) {
         let multipliers = {
-            "": 1,
+            "":1,
             "K": 1e3,
             "M": 1e6,
             "B": 1e9
         };
-        return parseFloat(numStr) * multipliers[numStr.charAt(numStr.length - 1).toUpperCase()].toString();
+        mult = multipliers[numStr.charAt(numStr.length - 1).toUpperCase()];
+        return ((mult ?? 1) * parseFloat(numStr)).toString();
     }
 
     function getVideoLength(lengthStr) {
