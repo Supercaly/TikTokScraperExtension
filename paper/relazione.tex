@@ -1,0 +1,70 @@
+\documentclass[fleqn, 10pt]{SelfArx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{csquotes}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{url}
+
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+\usepackage{hyperref} % Required for hyperlinks
+
+\hypersetup{
+	hidelinks,
+	colorlinks,
+	breaklinks=true,
+	urlcolor=color2,
+	citecolor=color1,
+	linkcolor=color1,
+	bookmarksopen=false,
+	pdftitle={Analisi quantitativa e qualitativa di video TikTok condivisi su Twitter},
+	pdfauthor={Lorenzo Calisti},
+}
+
+
+\JournalInfo{Etica della comunicazione digitale - Laurea Magistrale in Informatica Applicata - Università degli Studi di Urbino Carlo Bo} % Journal information
+% \Archive{Data di pubblicazione 10/02/2022 - DOI: \href{https://doi.org/10.5281/zenodo.6036183}{10.5281/zenodo.6036183}} % Informazioni che verranno inserite dal Docente in fase di pubblicazione
+
+\PaperTitle{Analisi quantitativa e qualitativa di video TikTok condivisi su Twitter} % Article title
+
+\Authors{Lorenzo Calisti\textsuperscript{1}*}
+% al fine di poter gestire la procedura di submission sul repository pubblico (nell'affiliazione viene chiarito il ruolo)
+\affiliation{\textsuperscript{1}\textit{Laurea Magistrale in Informatica Applicata, Università degli Studi di Urbino Carlo Bo, Urbino, Italia}} % Author affiliation
+% \affiliation{\textsuperscript{2}\textit{Docente di Programmazione per l'Internet of Things, Università degli Studi di Urbino Carlo Bo, Urbino, Italia}} % Author affiliation
+\affiliation{*\textbf{Corresponding author}: l.calisti@campus.uniurb.it} % Corresponding author
+
+\Keywords{Twitter -- TikTok -- Analisi dei contenuti } % Keywords - if you don't want any simply remove all the text between the curly brackets
+\newcommand{\keywordname}{Keywords} % Defines the keywords heading name
+
+\Abstract{
+Al giorno d'oggi i Social Network rappresentano una parte importante nella vita di buona parte della popolazione mondiale sempre più 
+connessa, fra questi vi sono sicuramente i social Tiwitter e TikTok; il primo ha rivoluzionato il mondo del micro-blogging divenendo il 
+mezzo d'informazione primario per molte persone, il secondo ha trasformato l'approccio al contenuto multimediale grazie 
+a video di brevissima durata e ad un algoritmo in grado di consigliare il video migliore nel momento giusto.
+Questo articolo propone uno studio dei contenuti, dei formati e delle emozioni rilevati in una serie di video originariamente 
+pubblicati su TikTok ed in seguito ricondivisi su Twitter. Per l'occasione è anche stato sviluppato un tool in grado di semi-automatizzare 
+la fase di raccolta delle metriche di user engagement.
+}
+
+\begin{document}
+
+\maketitle
+
+\input{introduzione}
+\input{metodo}
+\input{risultati}
+\input{discussione}
+\input{conclusioni}
+
+\phantomsection
+\bibliographystyle{unsrt}
+\bibliography{relazione}
+
+\end{document}

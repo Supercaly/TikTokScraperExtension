@@ -1,0 +1,204 @@
+\section{Metodologia e Materiali}
+\label{sec:metodi}
+
+\subsection{Raccolta dei dati}
+
+La seguente ricerca sviluppa uno studio di tipo quantitativo e qualitativo su una serie di video pubblicati sul Social Network TikTok
+e condivisi da diversi utenti su Twitter in un periodo di tempo che val dal 3 marzo 2022 al 17 marzo 2022. 
+I tweet condivisi sono stati esportati utilizzando le API ufficiali messe a disposizione da Twitter\cite{twitterapi} che 
+consentono a tutti gli utenti registrati di scaricare una lista di tweet prodotti in un periodo di tempo specifico. 
+Le API ufficiali offrono un gran numero di informazioni riguardanti i tweet ricercati, fra queste abbiamo: il testo contenuto 
+nel tweet, la sua data di creazione, gli hashtag presenti, e diverse altre informazioni riguardanti l'utente che lo ha creato.
+
+Quando si utilizzano le API di Twitter i dati sono ritornati nel formato JSON (JavaScript Object Notation), il primo passaggio è 
+quindi quello di convertirli in un formato più facile da elaborare; tutte le analisi in questa ricerca sono state svolte tramite 
+il software Google Sheet\cite{googlesheet}, uno strumento gratuito che permette di lavorare con i dati formattati in tabelle. I dati raw
+scaricati sono stati filtrati su Google Sheet in modo da estrarre solo le colonne di maggiore interesse e semplificare i 
+passaggi successivi.
+
+Una volta ottenuti tutti i dati di partenza ha avuto inizio il processo di raccolta delle statistiche di user engagement presenti sul 
+video originale di TikTok.
+La raccolta di questi dati è stata svolta im maniera semi automatica tramite l'utilizzo di un tool di web scraping realizzato 
+appositamente per questa ricerca. 
+Lo strumento dal nome TikTokScraperExtension\cite{scraper} consiste in una semplice estensione del browser Google Chrome 
+programmata nel linguaggio di programmazione JavaScript che fa largo utilizzo delle API DOM (Document Object Model) messe a disposizione dal browser 
+per eseguire web scraping di tutti i contenuti che sono normalmente visibili aprendo il video nella pagina web di TikTok come ad esempio: 
+la lunghezza del video, la caption e il numero di like, commenti e condivisioni. 
+Il processo è semi automatico poiché l'operatore deve comunque aprire ogni video in una scheda separata di Google Chrome, 
+attendere l'auto-play e premere un singolo pulsante che copierà tutte le informazioni ricercate direttamente all'interno della clipboard; 
+in seguito sarà necessario incollare questi dati in una colonna del foglio di lavoro di Google Sheet.
+I dati raccolti in questo modo sono però formattati sotto forma di stringhe JSON e quindi devono essere processati tramite delle 
+espressioni regolari per estrarre i veri valori prima del loro utilizzo; questo passaggio è stato eseguito tramite delle funzioni 
+native di Google Sheet.
+
+Il processo automatico è in grado di raccogliere solo i dati visibili negli elementi della pagina web di TikTok, alcune informazioni 
+però sono codificate direttamente all'interno dei video che devono essere analizzati manualmente da un operatore, queste variabili sono: 
+la presenza di sottotitoli, di testo, di linguaggi parlati e di musiche di sottofondo. Ognuna di queste variabili sono di tipo 
+booleano e vengono codificate come presente (TRUE) o assente (FALSE). Nella tabella \ref{tab:video_var} è possibile vedere tutte 
+le variabili raccolte manualmente dall'operatore oppure mediante il processo semi automatizzato.
+
+\begin{table*}[htb]
+    \centering
+    \small
+    \begin{tabular}{l c c r}
+        \hline
+        Variabile & Descrizione & N (\%) \\
+        \hline
+        Views & Il numero di visualizzazioni del video & - \\
+        Likes & Il numero di like del video & - \\
+        Commenti & Il numero di commenti del video & - \\
+        Condivisioni & Il numero di condivisioni del video & - \\
+        Lunghezza & La lunghezza del video & - \\
+        Hashtag & Gli hashtag inseriti nella caption se presenti & - \\
+        Sottotitoli & Il video include del testo che traduce & 37 (14,68\%) \\
+                    & o trascrive il dialogo & \\
+        Testo & Il video include del testo che aumenta & 159 (63,10\%) \\
+              & in qualche modo l'efficacia del messaggio & \\
+        Lingua parlata & Nel video è parlata una lingua & 134 (53,17\%) \\
+        Musica & Il video include una musica di sottofondo & 139 (55,16\%) \\
+        Caption & Un messaggio è inserito come descrizione in aggiunta al video & 192 (76,19\%) \\  
+        \hline
+    \end{tabular}    
+    \caption{Variabili che indicizzano il video di TikTok. Le variabili Sottotitoli, Testo, Lingua parlata, Musica e Caption
+    sono state codificate come presente (1) o assente (0). }
+    \label{tab:video_var}
+\end{table*}
+
+\subsection{Analisi dei video di TikTok}
+
+Una volta raccolte tutte le informazioni analitiche nell'interfaccia di TikTok oppure direttamente all'interno dei video ci siamo 
+concentrati sull'analisi dei formati, dei contenuti e delle emozioni.
+Ogni video è stato visionato numerose volte da un singolo coder in diverse sessioni nell'arco di alcuni giorni cercando di inserirlo 
+ogni volta nella categoria più opportuna, questo processo è stato particolarmente dispendioso in termini di tempo poiché man mano che 
+i video venivano categorizzati anche le classi venivano aggiornate rendendo necessario ricontrollare tutti i video passati.
+
+Il processo di classificazione è stato eseguito inizialmente concentrandosi solamente nell'identificare il formato video, 
+le categorie delineate sono mutualmente esclusive e un video può appartenere solo ad una di queste. Il processo ha trovato 
+le seguenti categorie: acting, infografica, news, parlato, slideshow, presa diretta, reaction, compilation, TV/Film. 
+La tabella \ref{tab:video_type} mostra nel dettaglio le tipologie di formato video rilevate.
+
+\begin{table*}[htb]
+    \centering
+    \small
+    \begin{tabular}{l c c r}
+        \hline
+        Formato & Descrizione & Esempi & N (\%) \\
+        \hline
+        Acting & Un video in cui sono presenti balletti  & https://vm.tiktok.com/ZMLUM1Hky &  27 (10,71\%) \\
+               & di TikTok oppure persone che recitano & https://vm.tiktok.com/ZMLUB3QNE & \\
+               & appositamente per il video &  & \\
+        Infografica & Un video in cui le informazioni sono & https://vm.tiktok.com/ZMLUkV2JU & 30 (11,90\%) \\
+                    & presentate tramite immagini, disegni, & https://vm.tiktok.com/ZMLUSA9Qn & \\
+                    & animazioni, illustrazioni o grafici & & \\
+        News &	Un video che presenta informazioni su & https://vm.tiktok.com/ZMLU9EV3Y & 5 (1,98\%) \\
+             &  fatti accaduti recentemente & https://vm.tiktok.com/ZMLy7pKU4 & \\
+        Parlato & Un video in cui ci sono persone & https://vm.tiktok.com/ZMLUV1jSp & 58 (23,02\%) \\
+                & inquadrate mentre parlano & https://vm.tiktok.com/ZMLU47Fjt & \\
+        Slideshow &	Un video composto da una carrellata di & https://vm.tiktok.com/ZMLUSY2MH & 36 (14,29\%) \\
+                  & fotografie o immagini statiche & https://vm.tiktok.com/ZMLUBELm9 & \\
+        Presa diretta & Un video che mostra degli eventi in diretta& https://vm.tiktok.com/ZMLUF31S3 & 29 (11,51\%) \\
+                      & & https://vm.tiktok.com/ZMLUYDvrh & \\
+        Reaction & Un video in cui persone reagiscono ad & https://vm.tiktok.com/ZMLUYVdvk & 3 (1,19\%) \\
+                 & altri contenuti multimediali & https://vm.tiktok.com/ZMLUqneqx & \\
+        Compilation & Un video composto da una carrellata & https://vm.tiktok.com/ZMLU2x7rV & 39 (15,48\%) \\
+                    & di video montati assieme & https://vm.tiktok.com/ZMLUj87Lt & \\
+        TV/Film & Un video contenente spezzoni di film o & https://vm.tiktok.com/ZMLU2PBBs & 25 (9,92\%) \\
+                & programmi andati in onda in TV & https://vm.tiktok.com/ZMLU2TSGv & \\
+        \hline
+    \end{tabular}
+    \caption{Formato video di TikTok. Le categorie sono mutualmente esclusive, ogni video appartiene a una sola.}
+    \label{tab:video_type}
+\end{table*}
+
+Per quanto riguarda i contenuti video la categorizzazione è avvenuta in maniera del tutto analoga rilevando le seguenti classi: 
+Sconosciuto, Vip/Gossip, Guerra, Promo, Motivazionale, Umorismo, Omaggio, Complottismo, Animali, Musica, Covid-19, 
+Politica, Personale, Gameplay, Sport. 
+La tabella \ref{tab:video_content} mostra nel dettaglio ogni categoria video individuata.
+
+\begin{table*}[htb]
+    \centering
+    \small
+    \begin{tabular}{l c c r}
+        \hline
+        Contenuto & Descrizione & Esempi & N (\%) \\
+        \hline
+        Sconosciuto & Un video con contenuti non analizzabili & https://vm.tiktok.com/ZMLDV9cKB & 17 (6,75\%) \\
+                    & & https://vm.tiktok.com/ZMLDVneCS & \\
+        Vip/Gossip & Un video contenente personaggi famosi & https://vm.tiktok.com/ZMLDWSasV& 38 (15,08\%) \\
+                   & o fatti di gossip & https://vm.tiktok.com/ZMLUBD6k1 & \\ 
+        Guerra & Un video con contenuti riguardanti & https://vm.tiktok.com/ZMLDKTUQ9 & 70 (27,78\%) \\
+               & la guerra in Ucraina e l'invasione Russa & https://vm.tiktok.com/ZMLUFEKhy& \\
+        Promo & Un video con lo scopo di promuovere & https://vm.tiktok.com/ZMLDVqcjx & 5 (1,98\%) \\
+              & contenuti personali & https://vm.tiktok.com/ZMLUVY6VB & \\
+        Motivazionale & Un video con lo scopo di motivare l'utente & https://vm.tiktok.com/ZMLD7XRH8 & 14 (5,56\%) \\
+                     & & https://vm.tiktok.com/ZMLUVYgVc & \\
+        Umorismo & Un video di tipo umoristico & https://vm.tiktok.com/ZMLD3hGCq & 20 (7,94\%) \\
+                 & & https://vm.tiktok.com/ZMLUYVdvk & \\
+        Omaggio & Un video con lo scopo di omaggiare & https://vm.tiktok.com/ZMLU2x7rV & 6 (2,38\%) \\
+                & un personaggio famoso o un evento passato & https://vm.tiktok.com/ZMLU2TSGv & \\
+        Complottismo & Un video con contenuti complottisti & https://vm.tiktok.com/ZMLU2PBBs & 1 (0,40\%) \\
+                & & & \\
+        Animali & Un video contenente animali & https://vm.tiktok.com/ZMLUj1DVM & 2 (0,79\%) \\
+                & & https://vm.tiktok.com/ZMLfRXYML & \\
+        Musica & Un video contenente performance musicali & https://vm.tiktok.com/ZMLUYDvrh & 21 (8,33\%) \\
+                & & https://vm.tiktok.com/ZMLUYSB7X & \\
+        Covid-19 & Un video riguardo l'emergenza Covid-19 & https://vm.tiktok.com/ZMLU2bLxk & 19 (7,54\%) \\
+                & & https://vm.tiktok.com/ZMLUUAAyB & \\
+        Politica & Un video che tratta contenuti politici & https://vm.tiktok.com/ZMLUhmwJn & 29 (11,51\%) \\
+                & & https://vm.tiktok.com/ZMLUkV2JU & \\
+        Personale & Un video con contenuti personali & https://vm.tiktok.com/ZMLUB3QNE & 6 (2,38\%) \\
+                & & https://vm.tiktok.com/ZMLUpePgW & \\
+        Gameplay & Un video in cui si mostra un gameplay di un videogioco & https://vm.tiktok.com/ZMLy7kHcq & 1 (0,40\%) \\
+                & & & \\
+        Sport & Un video contenente sport & https://vm.tiktok.com/ZMLUSAvJc & 3 (1,19\%) \\
+                & & https://vt.tiktok.com/ZSd1GJv4U & \\
+        \hline
+    \end{tabular}
+    \caption{Contenuti dei video di TikTok. Le categorie sono mutualmente esclusive, ogni video appartiene a una sola.}
+    \label{tab:video_content}
+\end{table*}
+
+L'ultimo passaggio consiste nel trovare le classi riguardanti le emozioni che ogni video provoca in chi lo visiona; quest'ultimo 
+processo può essere considerato come il più complicato da classificare poiché riguarda profondamente la soggettività dell'individuo. 
+Dopo numerosi tentativi sono state individuate le seguenti categorie di emozioni: Sconosciuto, Hype, Sospetto, Stupore, Nostalgia, 
+Ammirazione, Indignazione, Felicità/Risate, Speranza, Paura/Rabbia/Tristezza, Informazione.
+Nella tabella \ref{tab:video_emotion} è possibile vedere tutte le emozioni registrate.
+
+\begin{table*}[htb]
+    \centering
+    \small
+    \begin{tabular}{l c c r}
+        \hline
+        Emozioni & Descrizione & Esempi & N (\%) \\
+        \hline
+        Sconosciuto & Le emozioni nel video non sono analizzabili & https://vm.tiktok.com/ZMLDV9cKB & 22 (8,73\%) \\
+        & & https://vm.tiktok.com/ZMLDVneCS& \\
+        Hype & Il video trasmette emozioni di hype rispetto & https://vm.tiktok.com/ZMLDVqcjx& 10 (3,97\%) \\
+        & gli eventi, i personaggi o i prodotti mostrati & https://vm.tiktok.com/ZMLUVY6VB& \\
+        Sospetto & Il video trasmette emozioni di sospetto & https://vm.tiktok.com/ZMLDarydw& 10 (3,97\%) \\
+        & riguardo gli eventi mostrati & https://vm.tiktok.com/ZMLDqtXWX & \\
+        Stupore & Il video trasmette emozioni di stupore & https://vm.tiktok.com/ZMLDWSasV& 6 (2,38\%) \\
+        & & https://vm.tiktok.com/ZMLUBD6k1 & \\
+        Nostalgia & Il video trasmette emozioni di nostalgia & https://vm.tiktok.com/ZMLU2TSGv& 4 (1,59\%) \\
+        & & https://vm.tiktok.com/ZMLUj87Lt & \\
+        Ammirazione & Il video trasmette emozioni di ammirazione & https://vm.tiktok.com/ZMLUj1DVM& 45 (17,86\%) \\
+        & verso fatti o persone mostrate & https://vm.tiktok.com/ZMLUY2qA4 & \\
+        Indignazione & Il video trasmette emozioni di sdegno & https://vm.tiktok.com/ZMLU2KXuP& 70 (27,78\%) \\
+        & riguardo gli eventi mostrati & https://vm.tiktok.com/ZMLUMkYxU& \\
+        Felicità/Risate & Il video trasmette emozioni di felicità & https://vm.tiktok.com/ZMLUM1Hky& 60 (23,81\%) \\
+        & & https://vm.tiktok.com/ZMLUYSB7X& \\
+        Speranza & Il video trasmette emozioni di speranza & https://vm.tiktok.com/ZMLUV5vrD& 2 (0,79\%) \\
+        & & https://vm.tiktok.com/ZMLymkyXD& \\
+        Paura/Rabbia/Tristezza & Il video trasmette emozioni di paura, & https://vm.tiktok.com/ZMLU2x7rV& 19 (7,54\%) \\
+        & rabbia o tristezza riguardo i fatti mostrati & https://vm.tiktok.com/ZMLUURA1a& \\
+        Informazione & Dopo aver guardato il video l'utente si & https://vm.tiktok.com/ZMLUAreDA& 4 (1,59\%) \\
+        & sente informato riguardo i fatti mostrati & https://vm.tiktok.com/ZMLypBxSm& \\
+        \hline
+    \end{tabular}    
+    \caption{Emozioni trasmesse dai video di TikTok. Le categorie sono mutualmente esclusive, ogni video appartiene a una sola.}
+    \label{tab:video_emotion}
+\end{table*}
+
+Notiamo infine che sia per i contenuti che per le emozioni è presente la categoria "sconosciuto", questo è dovuto al fatto 
+che alcuni video riportano testi e voci interamente in lingue diverse dall'italiano o dall'inglese e per questo motivo non 
+è stato possibile categorizzarli correttamente.
